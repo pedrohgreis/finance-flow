@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+@plugin "daisyui";
+
+:root{
+	--surface-primary: #0F0F1B;
+	--surface-glass:   #151826; /* uso com opacidades entre 0.7 e 0.85 */
+	--surface-overlay: #252542;
+	--brand-violet:    #7B61FF;
+	--brand-violet1:   rgba(56, 39, 138, 0.274);
+	--text-primary:    #FFFFFF;
+	--text-secondary:  #e7e5e5;
+	--text-disabled:   #666666;
+
+	/* helpers em rgba para casos com opacidade */
+	--surface-glass-70: rgba(26,26,46,0.7);
+	--surface-glass-75: rgba(26,26,46,0.75);
+	--surface-glass-85: rgba(26,26,46,0.85);
+}
+
+
+body{
+	background-color: var(--surface-primary);
+	color: var(--text-primary);
+}
+
+

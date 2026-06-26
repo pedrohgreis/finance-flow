@@ -1,0 +1,143 @@
+<div class="flex min-h-dvh">
+
+    <!-- lado esquerdo -->
+    <div class="w-1/2 bg-(--brand-violet) flex flex-col justify-between pb-10">
+        <div class="flex justify-start items-center gap-2.5 w-full m-10">
+            <img src="icons/logo.svg" alt="finance logo">
+            <span class="text-(--text-primary) text-xl font-semibold antialiased  md:subpixel-antialiased">FinanceFlow</span>
+        </div>
+
+        <div class="flex flex-col mx-10">
+            <span class="text-(--text-primary) text-3xl">Comece a organizar <br> suas finanças hoje</span>
+            <span class="text-(--text-secondary) pt-4 text-2xl font-thin">Junte-se a milhares de pessoas que já transformaram sua vida financeira</span>
+        </div>
+
+        <div class="flex flex-col gap-3 ml-10">
+            <div class="flex flex-row gap-3">
+                <div class="flex items-center justify-center rounded-full bg-white/20 w-7 h-7">
+                    <img src="icons/check.svg" alt="check">
+                </div>
+                <span class="text-(--text-secondary)">Controle total de despesas e receitas</span>
+            </div>
+
+            <div class="flex flex-row gap-3">
+                <div class="flex items-center justify-center rounded-full bg-white/20 w-7 h-7">
+                    <img src="icons/check.svg" alt="check">
+                </div>
+                <span class="text-(--text-secondary)">Gráficos e análises em tempo real</span>
+            </div>
+
+            <div class="flex flex-row gap-3">
+                <div class="flex items-center justify-center rounded-full bg-white/20 w-7 h-7">
+                    <img src="icons/check.svg" alt="check">
+                </div>
+                <span class="text-(--text-secondary)">Orçamentos personalizados</span>
+            </div>
+
+            <div class="flex flex-row gap-3">
+                <div class="flex items-center justify-center rounded-full bg-white/20 w-7 h-7">
+                    <img src="icons/check.svg" alt="check">
+                </div>
+                <span class="text-(--text-secondary)">Múltiplas carteiras</span>
+            </div>
+
+            <div class="flex flex-row gap-3">
+                <div class="flex items-center justify-center rounded-full bg-white/20 w-7 h-7">
+                    <img src="icons/check.svg" alt="check">
+                </div>
+                <span class="text-(--text-secondary)">100% gratuito</span>
+            </div>
+
+           
+        </div>
+        
+    </div>
+
+    <!-- lado direito -->
+     <div class="w-1/2">
+        <div class="p-2 pl-15">
+            <h1 class="text-(--text-primary) font-semibold text-3xl antialiased md:subpixel-antialiased">Crie sua conta</h1>
+            <span class="text-(--text-secondary) font-light">Preencha os dados abaixo para começar</span>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-110 min-h-[38rem] h-auto mb-5 bg-(--surface-glass) m-auto mt-4 border border-white/10 rounded-2xl flex flex-col gap-4 p-8 pb-10">
+            <div class="flex flex-col gap-1.5">
+                <label class="text-(--text-primary) text-sm font-medium" for="name">Nome Completo</label>
+                <input formControlName = "name" class="bg-(--surface-glass) border border-white/10 rounded-3xl px-4 py-2.5 text-(--text-primary) text-sm placeholder:text-(--text-disabled) outline-none focus:border-(--brand-violet) transition-colors" type="text" id="name" placeholder="João Silva">
+
+                <div class="h-5">
+                    @if(form.get('name')?.invalid && form.get('name')?.touched){
+                        @if(form.get('name')?.errors?.['required']){
+                            <span class="text-xs text-red-500 font-extralight">O nome é obrigatório</span>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <label class="text-(--text-primary) text-sm font-medium" for="email">Email</label>
+                <input formControlName = "email" class="bg-(--surface-glass) border border-white/10 rounded-3xl px-4 py-2.5 text-(--text-primary) text-sm placeholder:text-(--text-disabled) outline-none focus:border-(--brand-violet) transition-colors" type="email" id="email" placeholder="seu@email.com">
+
+                <div class="h-5">
+                    @if(form.get('email')?.invalid && form.get('email')?.touched){
+                        @if(form.get('email')?.errors?.['required']){
+                            <span class="text-xs text-red-500 font-extralight">O e-mail é obrigatório</span>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <label class="text-(--text-primary) text-sm font-medium" for="password">Senha</label>
+                <input formControlName = "password" class="bg-(--surface-glass) border border-white/10 rounded-3xl px-4 py-2.5 text-(--text-primary) text-sm placeholder:text-(--text-disabled) outline-none focus:border-(--brand-violet) transition-colors" type="password" id="password" placeholder="Mínimo 8 caracteres">
+
+                <div class="min-h-10">
+                    @if(form.get('password')?.invalid && form.get('password')?.touched){
+                        @if(form.get('password')?.errors?.['required']){
+                            <span class="block text-xs text-red-500 font-extralight">A senha é obrigatória</span>
+                        }
+
+                        @if(form.get('password')?.errors?.['minlength']){
+                            <span class="block text-xs text-red-500 font-extralight">Mínimo de 6 caracteres</span>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <label class="text-(--text-primary) text-sm font-medium" for="confirmPassword">Confirmar senha</label>
+                <input formControlName = "confirmPassword" class="bg-(--surface-glass) border border-white/10 rounded-3xl px-4 py-2.5 text-(--text-primary) text-sm placeholder:text-(--text-disabled) outline-none focus:border-(--brand-violet) transition-colors" type="password" id="confirmPassword" placeholder="Digite a senha novamente">
+
+                <div class="min-h-10">
+                    @if(form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched){
+                        @if(form.get('confirmPassword')?.errors?.['required']){
+                            <span class="block text-xs text-red-500 font-extralight">A confirmação de senha é obrigatória</span>
+                        }
+
+                        @if(form.errors?.['passwordsNotMatch']){
+                            <span class="block text-xs text-red-500 font-extralight">Deve ser o mesmo da senha</span>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="flex flex-row items-center justify-center gap-1">
+                <input formControlName = "terms" type="checkbox" class="appearance-none w-4 h-4 rounded border border-white/30 checked:bg-(--brand-violet) checked:border-(--brand-violet) checked:bg-[url('/icons/check.svg')] checked:bg-center checked:bg-no-repeat checked:bg-[length:10px] transition-colors cursor-pointer" name="checkbox" id="checkbox">
+                <span class="text-sm font-light">
+                    Concordo com os <a class="text-(--brand-violet) no-underline" href="#" target="_blank" rel="noopener noreferrer">termos de uso</a> e <a class="text-(--brand-violet) no-underline" href="#" target="_blank" rel="noopener noreferrer">política de privacidade</a>
+                </span>
+            </div>
+
+            <button  class="mt-5 w-full rounded-xl h-10 bg-(--brand-violet) cursor-pointer text-(--text-primary) font-medium transition-all duration-200 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98]" type="submit">Criar conta</button>
+
+            <div class="flex items-center gap-3">
+                <div class="flex-1 h-px bg-white/10"></div>
+                <span class="text-(--text-secondary) text-sm">ou</span>
+                <div class="flex-1 h-px bg-white/10"></div>
+            </div>
+
+            <span class="m-auto">Já tem uma conta? <a class="text-(--brand-violet) no-underline" href="/signin">Faça login</a></span>
+        </form>
+     </div>
+
+</div>

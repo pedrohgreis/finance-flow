@@ -1,0 +1,5 @@
+/* Component styles are minimal — use Tailwind utilities in the template. */
+
+:host {
+  display: block;
+}
